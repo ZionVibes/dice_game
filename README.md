@@ -5,18 +5,19 @@ A strategic dice game based on classic rules where players compete for the highe
 ## How to Play
 
 1. Run the game using Python: `python dice_game.py`
-2. Choose number of rounds (or 0 for unlimited play until all categories are filled)
-3. Enter number of players (1-4) and their names
-4. Each player takes turns rolling 5 dice and scoring points
+2. Enter number of players (1-4) and their names
+3. Players take turns filling categories until all 15 categories are completed
+4. Each player gets one turn per category (column)
 
 ## Game Rules
 
 ### Gameplay
-- Each turn, you roll 5 dice up to 3 times
-- After each roll (except the last), you can choose which dice to re-roll
-- You can also "resign" after the 2nd or 3rd roll to keep current dice
+- Each turn, you roll 5 dice up to 2 times
+- After the first roll, you can choose which dice to re-roll
+- You can also "resign" to keep current dice
 - After your throws, you must assign the result to one unused category
 - If the result doesn't fit any category, you must pick a category and score 0
+- Game continues until all players have filled all 15 categories
 
 ### Scoring Categories
 
@@ -37,7 +38,7 @@ A strategic dice game based on classic rules where players compete for the highe
 ## Features
 
 - Support for 1-4 players
-- Configurable number of rounds or unlimited play
+- Column-based gameplay (15 categories per player)
 - Strategic dice selection and re-rolling
 - Complete scoring system with all standard categories
 - Interactive scoreboard showing all player progress

@@ -22,22 +22,9 @@ class DiceGame:
             'chance': 'Chance'
         }
         
-        self.num_rounds = self.get_num_rounds()
         self.players = self.setup_players()
         self.current_player_index = 0
-        self.current_round = 1
     
-    def get_num_rounds(self):
-        """Get number of rounds from user"""
-        while True:
-            try:
-                rounds = int(input("Enter number of rounds (or 0 for unlimited): "))
-                if rounds >= 0:
-                    return rounds
-                else:
-                    print("Please enter a non-negative number.")
-            except ValueError:
-                print("Please enter a valid number.")
     
     def setup_players(self):
         """Setup players for the game"""
@@ -205,7 +192,6 @@ class DiceGame:
     def player_turn(self, player):
         """Handle a single player's turn"""
         print(f"\n{player['name']}'s turn!")
-        print(f"Round {self.current_round}")
         
         # First roll
         input("Press Enter to roll 5 dice...")
@@ -249,16 +235,11 @@ class DiceGame:
                 print("Please enter a valid number.")
     
     def is_game_over(self):
-        """Check if game is over"""
-        if self.num_rounds == 0:
-            # Unlimited mode - check if all categories are filled
-            for player in self.players:
-                if any(score is None for score in player['scores'].values()):
-                    return False
-            return True
-        else:
-            # Limited rounds mode
-            return self.current_round > self.num_rounds
+        """Check if game is over - all categories filled for all players"""
+        for player in self.players:
+            if any(score is None for score in player['scores'].values()):
+                return False
+        return True
     
     def display_final_results(self):
         """Display final game results"""
@@ -291,7 +272,6 @@ class DiceGame:
                 if not self.is_game_over():
                     self.player_turn(player)
             
-            self.current_round += 1
         
         self.display_final_results()
         
