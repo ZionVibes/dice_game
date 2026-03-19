@@ -167,27 +167,27 @@ class DiceGame:
     
     def display_scoreboard(self):
         """Display current scores for all players"""
-        print("\n" + "="*80)
+        print("\n" + "="*120)
         print("SCOREBOARD")
-        print("="*80)
+        print("="*120)
         
         # Header
         header = f"{'Player':<15}"
         for cat_key, cat_name in self.categories.items():
-            header += f"{cat_name:<12}"
+            header += f"{cat_name:<15}"
         header += "TOTAL"
         print(header)
-        print("-" * 80)
+        print("-" * 120)
         
         # Player scores
         for player in self.players:
             row = f"{player['name']:<15}"
             for cat_key in self.categories.keys():
                 score = player['scores'][cat_key]
-                row += f"{str(score if score is not None else '-'):<12}"
+                row += f"{str(score if score is not None else '-'):<15}"
             row += f"{player['total_score']}"
             print(row)
-        print("="*80)
+        print("="*120)
     
     def player_turn(self, player):
         """Handle a single player's turn"""
