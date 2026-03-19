@@ -213,7 +213,7 @@ class DiceGame:
         self.display_dice(dice)
         
         # Second roll (optional)
-        print("\nThrow 2 of 3:")
+        print("\nThrow 2 of 2:")
         choice = input("Press Enter to reroll, or 'resign' to keep current dice: ")
         if choice.lower() != 'resign':
             reroll_indices = self.get_dice_to_reroll(dice)
@@ -221,16 +221,6 @@ class DiceGame:
                 for idx in reroll_indices:
                     dice[idx] = random.randint(1, 6)
                 self.display_dice(dice)
-            
-            # Third roll (optional)
-            print("\nThrow 3 of 3:")
-            choice = input("Press Enter to reroll, or 'resign' to keep current dice: ")
-            if choice.lower() != 'resign':
-                reroll_indices = self.get_dice_to_reroll(dice)
-                if reroll_indices:
-                    for idx in reroll_indices:
-                        dice[idx] = random.randint(1, 6)
-                    self.display_dice(dice)
         
         # Category selection
         available_cats = self.get_available_categories(player)
