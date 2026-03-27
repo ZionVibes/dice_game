@@ -13,7 +13,7 @@ A strategic dice game based on classic rules where players compete for the highe
 
 ### Gameplay
 - Each turn, you roll 5 dice up to 2 times
-- After the first roll, you can choose which dice to re-roll (or type 'all' to reroll all 5 dice)
+- After the first roll, you can choose which dice to re-roll (or type 'all' to reroll all 5 dice), or press Enter to keep all dice
 - You can also "keep" to keep current dice
 - After your throws, you must assign the result to one unused category
 - If the result doesn't fit any category, you must pick a category and score 0

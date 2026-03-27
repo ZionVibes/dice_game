@@ -69,8 +69,8 @@ class DiceGame:
         """Get which dice the player wants to reroll"""
         while True:
             try:
-                choice = input("Enter dice numbers to reroll (e.g., '1,3,5'), 'all' for all dice, or 'done' to keep: ")
-                if choice.lower() == 'done':
+                choice = input("Enter dice numbers to reroll (e.g., '1,3,5'), 'all' for all dice, or press Enter to keep: ")
+                if choice.strip() == '':
                     return []
                 elif choice.lower() == 'all':
                     return list(range(len(dice)))
