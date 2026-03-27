@@ -223,7 +223,7 @@ class DiceGame:
         print("\nAvailable categories:")
         for i, cat in enumerate(available_cats, 1):
             score = self.calculate_score(dice, cat)
-            print(f"{i}. {self.categories[cat]} (potential score: {score})")
+            print(f"{i}. {self.categories[cat]} - potential score: {score}")
         
         while True:
             try:
