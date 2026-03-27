@@ -15,7 +15,7 @@ class DiceGame:
             'two_pairs': 'Two Pairs',
             'three_kind': 'Three of a Kind',
             'four_kind': 'Four of a Kind',
-            'poker': 'Poker (5 of a Kind)',
+            'poker': 'Poker',
             'full_house': 'Full House',
             'low_straight': 'Low Straight (1-5)',
             'high_straight': 'High Straight (2-6)',
@@ -69,9 +69,11 @@ class DiceGame:
         """Get which dice the player wants to reroll"""
         while True:
             try:
-                choice = input("Enter dice numbers to reroll (e.g., '1,3,5') or 'done' to keep: ")
+                choice = input("Enter dice numbers to reroll (e.g., '1,3,5'), 'all' for all dice, or 'done' to keep: ")
                 if choice.lower() == 'done':
                     return []
+                elif choice.lower() == 'all':
+                    return list(range(len(dice)))
                 
                 indices = [int(x.strip()) - 1 for x in choice.split(',')]
                 if all(0 <= idx < len(dice) for idx in indices):
@@ -171,22 +173,26 @@ class DiceGame:
         print("SCOREBOARD")
         print("="*120)
         
-        # Header
+        # Header (without TOTAL column)
         header = f"{'Player':<15}"
         for cat_key, cat_name in self.categories.items():
             header += f"{cat_name:<15}"
-        header += "TOTAL"
         print(header)
         print("-" * 120)
         
-        # Player scores
+        # Player scores (without total in table)
         for player in self.players:
             row = f"{player['name']:<15}"
             for cat_key in self.categories.keys():
                 score = player['scores'][cat_key]
                 row += f"{str(score if score is not None else '-'):<15}"
-            row += f"{player['total_score']}"
             print(row)
+        print("="*120)
+        
+        # Display total scores separately below the table
+        print("\nCURRENT TOTAL SCORES:")
+        for player in self.players:
+            print(f"{player['name']}: {player['total_score']} points")
         print("="*120)
     
     def player_turn(self, player):
@@ -200,8 +206,8 @@ class DiceGame:
         
         # Second roll (optional)
         print("\nThrow 2 of 2:")
-        choice = input("Press Enter to reroll, or 'resign' to keep current dice: ")
-        if choice.lower() != 'resign':
+        choice = input("Press Enter to reroll, or 'keep' to keep current dice: ")
+        if choice.lower() != 'keep':
             reroll_indices = self.get_dice_to_reroll(dice)
             if reroll_indices:
                 for idx in reroll_indices:

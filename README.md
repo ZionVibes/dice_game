@@ -13,8 +13,8 @@ A strategic dice game based on classic rules where players compete for the highe
 
 ### Gameplay
 - Each turn, you roll 5 dice up to 2 times
-- After the first roll, you can choose which dice to re-roll
-- You can also "resign" to keep current dice
+- After the first roll, you can choose which dice to re-roll (or type 'all' to reroll all 5 dice)
+- You can also "keep" to keep current dice
 - After your throws, you must assign the result to one unused category
 - If the result doesn't fit any category, you must pick a category and score 0
 - Game continues until all players have filled all 15 categories
@@ -29,7 +29,7 @@ A strategic dice game based on classic rules where players compete for the highe
 - **Two Pairs:** Sum of both pairs (e.g., two 4s + two 6s = 20 points). Four of a kind also counts as two pairs.
 - **Three of a Kind:** Sum of three identical dice (e.g., three 4s = 12 points). Four of a kind also counts.
 - **Four of a Kind:** Sum of four identical dice (e.g., four 4s = 16 points)
-- **Poker (5 of a Kind):** Sum of all five dice (e.g., five 4s = 20 points)
+- **Poker:** Sum of all five dice (e.g., five 4s = 20 points)
 - **Full House:** Pair + Three of a Kind (e.g., three 4s + two 6s = 24 points)
 - **Low Straight:** 1-2-3-4-5 sequence (always 15 points)
 - **High Straight:** 2-3-4-5-6 sequence (always 20 points)
