@@ -2,12 +2,19 @@
 
 A strategic dice game based on classic rules where players compete for the highest score by filling different scoring categories.
 
+## Language Support
+
+The game supports both English and Polish languages! At the start of the game, you can choose:
+- **English** - Full English interface and category names
+- **Polski** - Complete Polish translation including category names
+
 ## How to Play
 
 1. Run the game using Python: `python dice_game.py`
-2. Enter number of players (1-4) and their names
-3. Players take turns filling categories until all 15 categories are completed
-4. Each player gets one turn per category (column)
+2. Select your preferred language (English/Polski)
+3. Enter number of players (1-4) and their names
+4. Players take turns filling categories until all 15 categories are completed
+5. Each player gets one turn per category (column)
 
 ## Game Rules
 
@@ -37,6 +44,7 @@ A strategic dice game based on classic rules where players compete for the highe
 
 ## Features
 
+- **Multi-language support**: English and Polish interface
 - Support for 1-4 players
 - Column-based gameplay (15 categories per player)
 - Strategic dice selection and re-rolling
