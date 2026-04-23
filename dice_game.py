@@ -65,17 +65,18 @@ class DiceGame:
                 'tie_players': "It's a tie between {} with {} points! 🤝",
                 'play_again': "Would you like to play again? (y/n): ",
                 'thanks': "Thanks for playing! 🎲",
-                'player': "Player"
+                'player': "Player",
+                'table_header': "Player"
             },
             'pl': {
-                'welcome': "🎲 Witaj w Zaawansowanej Grze w Kości! 🎲",
+                'welcome': "🎲 Witaj w Pokerze Kościanym! 🎲",
                 'based_on': "Oparta na klasycznych zasadach gry w kości z wieloma kategoriami punktacji.",
                 'enter_players': "Podaj liczbę graczy (1-4): ",
                 'invalid_players': "Proszę podać liczbę od 1 do 4.",
                 'valid_number': "Proszę podać prawidłową liczbę.",
                 'player_name': "Podaj imię gracza {}: ",
                 'scoreboard': "TABELA WYNIKÓW",
-                'current_totals': "AKTUALNE SUMY PUNKTÓW:",
+                'current_totals': "AKTUALNA PUNKTACJA:",
                 'points': "punktów",
                 'player_turn': "Tura gracza {}!",
                 'roll_dice': "Naciśnij Enter, aby rzucić 5 kośćmi...",
@@ -83,7 +84,7 @@ class DiceGame:
                 'die': "Kość {}",
                 'total': "Suma",
                 'throw': "Rzut {} z 2:",
-                'reroll_prompt': "Podaj numery kości do ponownego rzutu (np. '1,3,5'), 'all' dla wszystkich kości, lub naciśnij Enter, aby zatrzymać: ",
+                'reroll_prompt': "Podaj numery kości do ponownego rzutu (np. '1,3,5'), 'all' dla wszystkich kości, lub naciśnij Enter, aby zachować obecne: ",
                 'invalid_dice': "Nieprawidłowe numery kości. Spróbuj ponownie.",
                 'invalid_format': "Nieprawidłowy format. Użyj liczb oddzielonych przecinkami (np. '1,3,5').",
                 'all_categories_used': "Wszystkie kategorie wykorzystane!",
@@ -100,7 +101,8 @@ class DiceGame:
                 'tie_players': "Remis między {} z {} punktami! 🤝",
                 'play_again': "Czy chcesz zagrać ponownie? (t/n): ",
                 'thanks': "Dziękujemy za grę! 🎲",
-                'player': "Gracz"
+                'player': "Gracz",
+                'table_header': "Gracz"
             }
         }
         return translations[self.language]
@@ -136,11 +138,11 @@ class DiceGame:
                 'pair': 'Para',
                 'two_pairs': 'Dwie Pary',
                 'three_kind': 'Trójka',
-                'four_kind': 'Czwórka',
+                'four_kind': 'Kareta',
                 'poker': 'Poker',
                 'full_house': 'Full',
-                'low_straight': 'Mały Strit (1-5)',
-                'high_straight': 'Duży Strit (2-6)',
+                'low_straight': 'Mały Strit',
+                'high_straight': 'Duży Strit',
                 'chance': 'Szansa'
             }
     
@@ -300,7 +302,7 @@ class DiceGame:
         print("="*120)
         
         # Header (without TOTAL column)
-        header = f"{'Player':<15}"
+        header = f"{self.translations['table_header']:<15}"
         for cat_key, cat_name in self.categories.items():
             header += f"{cat_name:<15}"
         print(header)
@@ -332,13 +334,11 @@ class DiceGame:
         
         # Second roll (optional)
         print("\n" + self.translations['throw'].format(2))
-        choice = input(self.translations['reroll_prompt'])
-        if choice.strip() != '':
-            reroll_indices = self.get_dice_to_reroll(dice)
-            if reroll_indices:
-                for idx in reroll_indices:
-                    dice[idx] = random.randint(1, 6)
-                self.display_dice(dice)
+        reroll_indices = self.get_dice_to_reroll(dice)
+        if reroll_indices:
+            for idx in reroll_indices:
+                dice[idx] = random.randint(1, 6)
+            self.display_dice(dice)
         
         # Category selection
         available_cats = self.get_available_categories(player)
